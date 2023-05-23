@@ -19,12 +19,7 @@ The `Beaconer` has two public properties:
 ```typescript
 import { Beaconer } from "beaconer";
 
-// The Beaconer will post your data to the target url using
-// the Beacon API (if available) and fallback on an 
-// `XMLHttpRequest`
 const success = await Beaconer.send("url", JSON.stringify({ someData: 123 }));
 
-// The `browserSupport` property will be true if the current 
-// browser supports the Beacon API
 const isUsingBeaconAPI = Beaconer.browserSupport;
 ```
