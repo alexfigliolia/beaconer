@@ -14,7 +14,11 @@ export class Beaconer {
   public static browserSupport = true;
 
   static {
-    if (!window?.navigator || !window?.navigator?.sendBeacon) {
+    if (
+      typeof window !== undefined ||
+      !window?.navigator ||
+      !window?.navigator?.sendBeacon
+    ) {
       this.browserSupport = false;
     }
   }
@@ -32,7 +36,7 @@ export class Beaconer {
     url: string | URL,
     data?: XMLHttpRequestBodyInit | null
   ) {
-    if (this.browserSupport) {
+    if (this.browserSupport && window?.location?.protocol === "https:") {
       return this.beacon(url, data);
     }
     return this.fallback(url, data);
