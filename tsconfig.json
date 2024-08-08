@@ -1,7 +1,9 @@
 {
-  "ts-node": {
+  "tsx": {
+    "typeCheck": false,
     "compilerOptions": {
-      "module": "commonjs"
+      "module": "CommonJS",
+      "moduleResolution": "Node"
     }
   },
   "compilerOptions": {
@@ -22,9 +24,19 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
   },
   "include": [
-    "src"
+    "src",
+    "ci",
+    ".eslintrc.cjs",
+    "**/*.json",
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "exclude": [
+    "coverage",
+    "dist",
+    "node_modules"
   ]
 }

@@ -15,7 +15,7 @@ export class Beaconer {
 
   static {
     if (
-      typeof window !== undefined ||
+      typeof window === "undefined" ||
       !window?.navigator ||
       !window?.navigator?.sendBeacon
     ) {
@@ -34,7 +34,7 @@ export class Beaconer {
    */
   public static async send(
     url: string | URL,
-    data?: XMLHttpRequestBodyInit | null
+    data?: XMLHttpRequestBodyInit | null,
   ) {
     if (this.browserSupport && window?.location?.protocol === "https:") {
       return this.beacon(url, data);
@@ -44,16 +44,16 @@ export class Beaconer {
 
   private static beacon(
     url: string | URL,
-    data?: XMLHttpRequestBodyInit | null
+    data?: XMLHttpRequestBodyInit | null,
   ) {
     return window.navigator.sendBeacon(url, data);
   }
 
   private static fallback(
     url: string | URL,
-    data?: XMLHttpRequestBodyInit | null
+    data?: XMLHttpRequestBodyInit | null,
   ) {
-    return new Promise<boolean>((resolve) => {
+    return new Promise<boolean>(resolve => {
       const request = new XMLHttpRequest();
       request.onload = () => {
         if (request.readyState === 4) {
