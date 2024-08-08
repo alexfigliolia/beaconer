@@ -2,8 +2,8 @@
   "name": "beaconer",
   "version": "1.0.2",
   "description": "A backward compatible wrapper around the Beacon API",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src/*"
@@ -46,5 +46,13 @@
     "http",
     "https",
     "request"
-  ]
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "module": "dist/mjs/index.js"
 }
